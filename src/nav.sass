@@ -1,0 +1,60 @@
+
+.navContainer
+    max-width: 1600px 
+    width: 100% 
+    padding: 0 20px
+    position: absolute
+    left: 50% 
+    transform: translateX(-50%)
+    display: flex 
+    justify-content: space-between
+    .logoContainer
+        display: flex 
+        align-items: center 
+        img 
+            height: 40px
+            margin-right: 20px
+    .navOptionsContainer
+        height: 50px
+        ul 
+            display: flex
+            height: 100%
+            li 
+                margin-right: 40px
+                display: flex
+                align-items: center
+                position: relative 
+                cursor: pointer
+                height: 100%
+                &:hover 
+                    color: #1FB7EC
+                &:hover .navSubMenu
+                    visibility: visible 
+                    z-index: 1000
+                    opacity: 1
+
+
+                .navSubMenu 
+                    position: absolute
+                    flex-direction: column
+                    min-width: 260px
+                    top: 80%
+                    margin-top: 10px
+                    visibility: hidden 
+                    z-index: -1
+                    opacity: 0
+                    transition: all 100ms ease
+                    ul 
+                        flex-direction: column
+                    li 
+                        width: 100% 
+                        padding: 10px 30px
+                        &:hover 
+                            background: #E9F9FF
+    .callForActionNavContainer 
+        display: flex 
+        .iconContainer 
+            margin-left: 20px
+            .icon
+                font-size: 30px
+                cursor: pointer

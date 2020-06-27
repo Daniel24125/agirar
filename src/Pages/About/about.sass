@@ -1,0 +1,65 @@
+.aboutHeaderContainer
+    width: 100% 
+    // height: calc(100vh - 65px) 
+    height: 70vh
+    background: url("https://scontent.fopo3-2.fna.fbcdn.net/v/t31.0-8/22550407_1015559121917825_7985656436199090898_o.jpg?_nc_cat=105&_nc_sid=730e14&_nc_ohc=-nh6XndSlsAAX9UWj_7&_nc_ht=scontent.fopo3-2.fna&oh=7885eeab48d064d649adb0261edc326d&oe=5F1BC92D")
+    background-size: cover
+    background-position: center 
+    position: relative
+    display: flex 
+    align-items: center
+    justify-content: center
+    .blueContainer
+        width: 100% 
+        height: 100%
+        background: linear-gradient(135deg, #00a4dd 0%,#ff8600 100%)
+        opacity: 0.8
+        position: absolute
+        z-index: 1
+    h2 
+        z-index: 3
+        color: white
+        border-bottom: 5px solid #FF8600
+        
+.contentContainer
+    width: 100% 
+    display: flex 
+    .sectionContainer
+        width: 50% 
+        display: flex 
+        flex-direction: column 
+        align-items: center 
+        padding: 100px 0 
+        position: relative
+        &:last-child
+            background: #DCF0FF
+
+        .historyCard 
+            width: 80% 
+            min-width: 500px
+            margin: 10px 0 
+            min-height: 200px
+            padding: 30px 
+            display: flex 
+            .iconContainer 
+                heigth: 100% 
+                .icon 
+                    border-radius: 100% 
+                    width: 60px
+                    height: 60px
+            .textContainer
+                height: 100% 
+                margin-left: 20px
+                .titleContainer
+                    display: flex 
+                    height: 60px 
+                    align-items: center 
+                    .title 
+                        margin-right: 20px
+        .objectivesContainer
+            padding: 0 110px 
+            text-align: center
+            position: sticky
+            top: 165px
+            display: flex 
+            flex-direction: column 
