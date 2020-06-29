@@ -1,2 +1,0 @@
-(this.webpackJsonpagirar=this.webpackJsonpagirar||[]).push([[15],{183:function(e,a,t){"use strict";t.r(a);var n=t(0),r=t.n(n);a.default=function(){return r.a.createElement("div",null,r.a.createElement("h1",null,"THIS IS THE Relatorios"))}}}]);
-//# sourceMappingURL=15.648a9a4a.chunk.js.map

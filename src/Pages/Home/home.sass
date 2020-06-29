@@ -16,6 +16,10 @@
             background-size: cover
             background-position: center
             position: relative
+            @include mQ(750px) 
+                display: flex 
+                align-items: center 
+                justify-content: center 
             .shapeContainer
                 border-bottom: calc(100vh - 65px) solid #00A4DD
                 border-right: 300px solid transparent
@@ -25,26 +29,59 @@
                 opacity: 0.7
                 position: absolute
                 display: flex 
-                z-index: 5         
-
+                z-index: 5   
+                @include mQ(1750px)      
+                    width: 50%
+                @include mQ(1100px)      
+                    width: 70%
+                @include mQ(750px)      
+                    width: 300px 
+                    height: 250px 
+                    border: none
+             
             .even 
                 border-bottom-color: #FF8600
                 transform: rotateY(180deg)
                 right: 0
+                @include mQ(750px) 
+                    background: #FF8600
+                    right: inherit
             .odd 
                 border-bottom-color: #00A4DD
+                @include mQ(750px) 
+                    background: #00A4DD
             .imgTextContainer
                 z-index: 10 
                 max-width: 350px 
                 color: white 
                 position: absolute
+                h4 
+                    @include mQ(750px) 
+                        font-size: 1.5rem
+                h6 
+                    @include mQ(750px) 
+                        font-size: 0.7rem
+                        max-width: 300px
+                        margin-top: 20px
+                 
             .oddText 
                 top: 150px 
                 left: 60px
+                @include mQ(750px)
+                    top: 50% 
+                    left: 50% 
+                    transform: translate(-50%, -50%)  
+                    text-align: center
+                    
             .evenText 
                 bottom: 150px 
                 right: 30px
-                          
+                @include mQ(750px)
+                    top: 50% 
+                    left: 50% 
+                    transform: translate(-50%, -50%)             
+                    text-align: center
+                    
             
     .imageNavigationContainer
         position: absolute
@@ -62,6 +99,10 @@
             height: 80vh 
             align-items: center
             margin-top: 200px
+            @include mQ(750px) 
+                padding: 0 20px
+            @include mQ(450px)
+                align-items: flex-end
             svg 
                 font-size: 50px
                 cursor: pointer
@@ -105,36 +146,68 @@
         margin: 10px 0
         width: 60%
         text-align: center
+        @include mQ(700px)
+            width: 90%
+            font-size: 1rem
+
     .buttonsContainer
         margin-top: 30px
+        @include mQ(350px)
+            display: flex 
+            flex-wrap: wrap 
+            justify-content: center 
         button 
             margin: 0 10px
+            @include mQ(350px)
+                margin: 10px 
 .newsContainer
     width: 100% 
-    height: 600px
     background: #E9F9FF
     cursor: grab 
     display: flex
     align-items: center
-    padding: 0 20px
+    padding: 100px 20px
     .newsCardContainer
-        width: 690px 
+        min-width: 690px 
         height: 380px
         display: flex 
         margin: 0 30px
+        @include mQ(770px)
+            flex-direction: row-reverse
+            min-width: 500px 
+            height: 200px
         .newsInfoContainer
-            width: 345px 
-            height: 380px
+            width: 50%
+            height: 100%
             display: flex 
             flex-direction: column 
             padding: 20px 30px
             position: relative 
+            h6 
+                @include mQ(770px)
+                    font-size: 1rem
+
+            &:first-child
+                @include mQ(770px)
+                    min-width: 300px
+            @include mQ(770px)
+                min-width: 200px
+                height: 100%
+                padding: 10px 30px
+
             .share 
                 position: absolute
                 bottom: 40px 
                 left: 30px 
+                @include mQ(770px)
+                    left: 100%
+                    transform: translateX(-110%)
+                    bottom: 10px 
+                    font-size: 0.6rem
+                
                 svg 
                     margin-right: 10px
+                    font-size: 1rem
 
 
 .donateContainer
@@ -143,9 +216,35 @@
     display: flex 
     justify-content: space-between
     align-items: center 
+    @include mQ(1400px)
+        height: 400px
+    @include mQ(1150px)
+        height: 300px
+    @include mQ(850px)
+        justify-content: center
     img 
         height: 100% 
+        @include mQ(850px)
+                display: none
     .donateInfoContainer
         display: flex 
         flex-direction: column 
         margin-right: 90px
+        font-size: 20px
+        padding: 10px 0 
+        @include mQ(850px)
+            margin: 0 
+            align-items: center
+            padding: 10px 20px
+            text-align: center
+        h3
+            @include mQ(1150px)
+                font-size: 2rem
+        h6
+            @include mQ(1150px)
+                font-size: 0.7rem
+            @include mQ(850px)
+                text-align: center 
+        h5 
+            @include mQ(1150px)
+                font-size: 1rem

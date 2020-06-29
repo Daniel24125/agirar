@@ -23,7 +23,7 @@ const Home = ()=> {
 
     const [imgPos, setImgPos] = React.useState(0)
     const imagesContainer = React.useRef();
-    const width = window.innerWidth -17
+    const width = window.innerWidth > 1900 ? window.innerWidth -17 : window.innerWidth  
     const textContainerRef = React.useRef();
     const [isActive, setIsActive] = React.useState(true);
 

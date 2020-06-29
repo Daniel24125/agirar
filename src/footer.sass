@@ -4,22 +4,35 @@ footer
     justify-content: center 
     background: #333333
     color: white 
-    height: 260px
+    padding: 50px 0 
     .footerContainer
         width: 100% 
         max-width: 1150px
         display: flex 
         justify-content: space-between
         align-items: center
+        padding: 0 50px 
+        @include mQ(700px)
+            flex-direction: column 
         .sectionContainer
+            @include mQ(700px)
+                display: flex 
+                align-items: center 
+                flex-direction: column 
+                margin-bottom: 40px
             .title 
                 margin-bottom: 25px
+                @include mQ(700px)
+                    color: #FF8600
+                    margin-bottom: 10px
             .item
                 .contact 
                     color: #00A4DD
             .map 
                 width: 500px
                 height: 150px
+                @include mQ(1250px)
+                    display: none
                 iframe 
                     width: 100% 
                     height: 100% 
@@ -28,3 +41,5 @@ footer
                 height: 150px
                 display: flex 
                 align-items: flex-end
+                @include mQ(700px)
+                    height: 30px

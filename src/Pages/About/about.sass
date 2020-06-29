@@ -1,6 +1,5 @@
 .aboutHeaderContainer
     width: 100% 
-    // height: calc(100vh - 65px) 
     height: 70vh
     background: url("https://scontent.fopo3-2.fna.fbcdn.net/v/t31.0-8/22550407_1015559121917825_7985656436199090898_o.jpg?_nc_cat=105&_nc_sid=730e14&_nc_ohc=-nh6XndSlsAAX9UWj_7&_nc_ht=scontent.fopo3-2.fna&oh=7885eeab48d064d649adb0261edc326d&oe=5F1BC92D")
     background-size: cover
@@ -20,10 +19,22 @@
         z-index: 3
         color: white
         border-bottom: 5px solid #FF8600
+        padding-bottom: 10px
+        @include mQ(720px)
+            width: 50%
+            text-align: center 
+            border: none
+            font-weight: 400
+        @include mQ(400px)
+            width: 90% 
+            font-size: 2.5rem
+
         
 .contentContainer
     width: 100% 
     display: flex 
+    @include mQ(1080px)
+        	flex-direction: column 
     .sectionContainer
         width: 50% 
         display: flex 
@@ -31,6 +42,8 @@
         align-items: center 
         padding: 100px 0 
         position: relative
+        @include mQ(1080px)
+            width: 100% 
         &:last-child
             background: #DCF0FF
 
@@ -41,8 +54,20 @@
             min-height: 200px
             padding: 30px 
             display: flex 
+            @include mQ(520px)
+                min-width: 90%
+            @include mQ(400px)
+                flex-direction: column 
+                margin: 30px 0 
+
             .iconContainer 
                 heigth: 100% 
+                @include mQ(400px)
+                    height: 10px
+                    width: 100% 
+                    justify-content: center 
+                    transform: translateY(-60px)
+                    display: flex
                 .icon 
                     border-radius: 100% 
                     width: 60px
@@ -67,6 +92,20 @@
             top: 165px
             display: flex 
             flex-direction: column 
+            @include mQ(1700px)
+                top: 100px
+            @include mQ(1550px)
+                padding: 0 20px 
+            @include mQ(1150px)
+                top: 70px
+            @include mQ(1080px)
+                padding: 0 110px 
+            @include mQ(600px)
+                padding: 0 20px 
+            h3 
+                @include mQ(1150px)
+                    font-size: 2rem
+
 .galleryContainer
     width: 100% 
     height: calc(100vh - 65px)
@@ -79,3 +118,5 @@
         width: 50% 
         height: auto 
         z-index: 2000
+        @include mQ(520px)
+            width: 90%

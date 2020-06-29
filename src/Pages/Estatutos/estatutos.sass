@@ -10,7 +10,6 @@
     justify-content: center
     color: white
     .title
-        margin-left: 100px
         font-weight: bold
         text-shadow: 0 3px #222222
         padding-bottom: 20px 
@@ -28,6 +27,15 @@
         overflow-y: auto
         display: flex 
         overflow-x: hidden
+        justify-content: center
+        @include mQ(1700px)
+            width: 70%
+            background: #E9F9FF
+        @include mQ(1080px)
+            width: 90% 
+        @include mQ(900px)
+            display: none
+
     .header 
         width: 50% 
         min-height: 50px 
@@ -37,6 +45,12 @@
         align-items: center
         padding: 0 30px 
         justify-content: space-between
+        @include mQ(1700px)
+            width: 70%
+        @include mQ(1080px)
+            width: 90% 
+
+        
         a 
             display: flex 
             align-items: center

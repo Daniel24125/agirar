@@ -1,4 +1,3 @@
-
 .navContainer
     max-width: 1600px 
     width: 100% 
@@ -12,11 +11,26 @@
     .logoContainer
         display: flex 
         align-items: center 
+        .navMenuIcon
+            margin-right: 20px
+            cursor: pointer
+            display: none
+            @include mQ(1080px)
+                display: inherit
+         
+           
         img 
             height: 40px
             margin-right: 20px
+            @include mQ(400px)
+                display: none
+        h5 
+            @include mQ(400px)
+                display: none
     .navOptionsContainer
         height: 50px
+        @include mQ(1080px)
+            display: none
         ul 
             display: flex
             height: 100%
@@ -50,12 +64,42 @@
                     li 
                         width: 100% 
                         padding: 10px 30px
+                        cursor: pointer
                         &:hover 
                             background: #E9F9FF
     .callForActionNavContainer 
         display: flex 
         .iconContainer 
             margin-left: 20px
+            @include mQ(400px)
+                margin-left: 10px
             .icon
                 font-size: 30px
                 cursor: pointer
+    .mobileNavContainer
+        display: none
+        position: absolute
+        top: 50px 
+        width: 100%
+        padding: 10px 0 
+        background: white 
+        left: 0px
+        ul  
+            display: flex 
+            flex-direction: column 
+            align-items: center
+            width: 100%
+            li 
+                padding: 10px 30px
+                display: flex 
+                cursor: pointer
+               
+        .hideSub
+            height: 0 !important
+            
+        .submenu 
+            height: auto
+            background: #FFD5A5
+
+        @include mQ(1080px)
+            display: inherit
