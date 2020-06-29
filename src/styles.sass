@@ -6,6 +6,7 @@
 @import "Pages/Parcerias/parcerias"
 @import "Pages/Contacts/contacts"
 @import "Pages/Donativo/donativo"
+@import "Pages/JoinUs/join"
     
 a 
     color: inherit
@@ -29,3 +30,38 @@ ul
     position: fixed 
     top: 0 
     transition: all 100ms ease
+
+.loadingContainer 
+    width: 100% 
+    height: calc(100vh - 65px)
+    position: fixed 
+    z-index: 2000
+    display: flex 
+    align-items: center 
+    justify-content: center 
+    flex-direction: column 
+    background: white
+    .loadingText
+        margin-top: 50px
+
+.errorContainer
+    width: 100% 
+    height: calc(100vh - 65px)
+    display: flex 
+    justify-content: center 
+    align-items: center 
+
+.successContainer
+    width: 100% 
+    height: calc(100vh - 65px)
+    display: flex 
+    justify-content: center 
+    align-items: center 
+    flex-direction: column 
+    background: linear-gradient(135deg, #00a4dd 0%,#ff8600 100%)
+    color: white 
+    svg 
+        font-size: 200px
+        margin-bottom: 20px
+    button 
+        margin-top: 30px 

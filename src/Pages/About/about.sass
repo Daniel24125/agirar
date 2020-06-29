@@ -47,6 +47,10 @@
                     border-radius: 100% 
                     width: 60px
                     height: 60px
+                    cursor: pointer 
+                    transition: all 100ms ease 
+                    &:hover 
+                        transform: scale(1.1)
             .textContainer
                 height: 100% 
                 margin-left: 20px
@@ -63,3 +67,15 @@
             top: 165px
             display: flex 
             flex-direction: column 
+.galleryContainer
+    width: 100% 
+    height: calc(100vh - 65px)
+    position: fixed 
+    display: flex 
+    align-items: center 
+    justify-content: center 
+    z-index: 2000
+    .imageContainer
+        width: 50% 
+        height: auto 
+        z-index: 2000

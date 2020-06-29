@@ -15,7 +15,7 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
             <div className="sectionContainer">
                 <div className="textContainer">
                     <Typography color="primary" variant="h4" >
-                        Quer visitar-nos? 
+                        Visite-nos
                     </Typography>
                     <Paper className="textCard" elevation={2}>
                         <Typography  variant="body1" >

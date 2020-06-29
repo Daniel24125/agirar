@@ -12,8 +12,12 @@ import rarpamp from "../../Assets/rarpamplogo.png"
                 </Typography>
             </div>
             <div className="partnersContainer">
-                <img src={centroParoquial} alt=""/>
-                <img src={rarpamp} alt=""/>
+                <a target="__blank" rel="noopener noreferrer" href="https://www.facebook.com/Centro-Social-e-Paroquial-de-Vilar-de-Andorinho-315213705190152/">
+                    <img src={centroParoquial} alt=""/>
+                </a> 
+                <a target="__blank" rel="noopener noreferrer" href="http://www.rarp-amp.pt/">
+                    <img src={rarpamp} alt=""/>
+                </a>
             </div>
         </>
     )

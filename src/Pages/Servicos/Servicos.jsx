@@ -4,10 +4,18 @@ import { Link } from 'react-router-dom'
 import {useGetAteliers} from "../../Domain/UseCases"
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
+import { Skeleton } from '@material-ui/lab'
 
  const Servicos = ()=> {
-    const services = useGetAteliers()
+    const {
+        data: services,
+        status: servicesStatus
+      } = useGetAteliers()
 
+    const isLoading = React.useMemo(() => {
+        return servicesStatus === 'loading'  
+        }, [servicesStatus])
+    
     return (
         <>
             <div className="servicesHeaderContainer">
@@ -20,6 +28,19 @@ import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
                
             </div>
             <div className="servicesContainer">
+            {isLoading && <>
+                        <Skeleton style={{margin: 10}} width={360} height={500} variant="rect"   />
+                        <Skeleton style={{margin: 10}} width={360} height={500} variant="rect"   />
+                        <Skeleton style={{margin: 10}} width={360} height={500} variant="rect"   />
+                        <Skeleton style={{margin: 10}} width={360} height={500} variant="rect"   />
+                        <Skeleton style={{margin: 10}} width={360} height={500} variant="rect"   />
+                        <Skeleton style={{margin: 10}} width={360} height={500} variant="rect"   />
+                        <Skeleton style={{margin: 10}} width={360} height={500} variant="rect"   />
+                        <Skeleton style={{margin: 10}} width={360} height={500} variant="rect"   />
+
+                    </>}
+
+                {!isLoading && <>
                 {services.map(serv=>{
                     return(
                         <Paper className="cardContainer" elevation={2}>
@@ -43,6 +64,7 @@ import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
                         </Paper>
                     )
                 })}
+                </>}
             </div>
         </>
     )

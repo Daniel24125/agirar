@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import Container from 'typedi'
+import AgirarRepository from "./Services/AgirarRepository"
+
+Container.set(new AgirarRepository())
+
 
 ReactDOM.render(
   <App />,

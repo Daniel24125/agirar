@@ -2,12 +2,29 @@ import React from 'react'
 import { Typography, Paper, Button} from '@material-ui/core'
 import {useGetHistory} from "../../Domain/UseCases"
 import { Link } from 'react-router-dom'
-
+import { Skeleton } from '@material-ui/lab'
  const About = ()=> {
-    const historyCards = useGetHistory()
+    const {
+        data: historyCards,
+        status: historyStatus
+      } = useGetHistory()
+
+    const isLoading = React.useMemo(() => {
+        return historyStatus === 'loading'  
+        }, [historyStatus])
+    
+
+    const [showGallery, setShowGallery] = React.useState({
+        show: false, 
+        img: ""
+    })
 
     return (
         <>
+            <div className={showGallery.show?"galleryContainer" : "galleryContainer hide" }>
+                <div onClick={()=>setShowGallery({... showGallery, show: false})} className="blck"></div>
+                <img src={showGallery.img} alt="" className="imageContainer"/>
+            </div>
             <div className="aboutHeaderContainer">
                 <div className="blueContainer"></div>
                 <Typography variant="h2">Todos nós somos AGIRAR</Typography>
@@ -43,32 +60,43 @@ import { Link } from 'react-router-dom'
                 </div>
                 <div className="sectionContainer">
                      <Typography style={{marginBottom: 50, fontWeight: "bold"}} color="primary" variant="h5">A NOSSA HISTÓRIA</Typography>
-                    
-                    {
-                        historyCards.map(hist=>{
-                            return(
-                                <Paper elevation={1} className="historyCard">
-                                    <div className="iconContainer">
-                                        <div style={{backgroundImage: `url(${hist.url})`, backgroundSize: "cover", backgroundPosition: "center"}} className="icon"></div>
-                                    </div>
-                                    <div className="textContainer">
-                                        <div className="titleContainer">
-                                            <div className="title">
-                                                <Typography style={{fontWeight: "bold"}} color="primary" variant="subtitle1">{hist.title}</Typography>
+                    {isLoading && <>
+                        <Skeleton className="historyCard" variant="rect"   />
+                        <Skeleton className="historyCard" variant="rect"   />
+                        <Skeleton className="historyCard" variant="rect"   />
+                        <Skeleton className="historyCard" variant="rect"   />
+                        <Skeleton className="historyCard" variant="rect"   />
+                        <Skeleton className="historyCard" variant="rect"   />
+                        <Skeleton className="historyCard" variant="rect"   />
 
+                    </>}
+                    {!isLoading && <>
+                        {
+                            historyCards.map(hist=>{
+                                return(
+                                    <Paper elevation={1} className="historyCard">
+                                        <div className="iconContainer">
+                                            <div title="Ver imagem" onClick={()=>setShowGallery({show: true, img: hist.url} )} style={{backgroundImage: `url(${hist.url})`, backgroundSize: "cover", backgroundPosition: "center"}} className="icon"></div>
+                                        </div>
+                                        <div className="textContainer">
+                                            <div className="titleContainer">
+                                                <div className="title">
+                                                    <Typography style={{fontWeight: "bold"}} color="primary" variant="subtitle1">{hist.title}</Typography>
+
+                                                </div>
+                                                <div className="date">
+                                                    <Typography color="primary" variant="caption"> <i>{hist.date}</i>  </Typography>
+                                                </div>
                                             </div>
-                                            <div className="date">
-                                                <Typography color="primary" variant="caption"> <i>{hist.date}</i>  </Typography>
+                                            <div className="descContainer">
+                                            <Typography color="primary" variant="caption"> {hist.description}  </Typography>
                                             </div>
                                         </div>
-                                        <div className="descContainer">
-                                        <Typography color="primary" variant="caption"> {hist.description}  </Typography>
-                                        </div>
-                                    </div>
-                                </Paper>
-                            )
-                        })
-                    }
+                                    </Paper>
+                                )
+                            })
+                        }
+                    </>}
                 </div>
             </div>
 

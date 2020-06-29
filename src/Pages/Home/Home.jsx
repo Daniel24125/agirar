@@ -2,18 +2,27 @@ import React from 'react'
 import donate from "../../Assets/donate.png"
 import { Typography, Button, Paper } from '@material-ui/core'
 import { Link } from 'react-router-dom'
-import {useGetCards} from "../../Domain/UseCases"
+import {useGetCards, useGetSliderInfo} from "../../Domain/UseCases"
 import ScrollContainer from 'react-indiana-drag-scroll'
 import ShareIcon from '@material-ui/icons/Share';
 import Slider from "../../Components/Slider"
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import {useGetSliderInfo} from "../../Domain/UseCases"
+import Loading from "../../Components/Loading"
 
 const Home = ()=> {
-    const cards = useGetCards()
+   
+    const {
+        data: cards,
+        status: cardsStatus
+      } = useGetCards()
+
+      const {
+        data: images,
+        status: imagesStatus
+      } = useGetSliderInfo()
+
     const [imgPos, setImgPos] = React.useState(0)
     const imagesContainer = React.useRef();
-    const images = useGetSliderInfo(); 
     const width = window.innerWidth -17
     const textContainerRef = React.useRef();
     const [isActive, setIsActive] = React.useState(true);
@@ -23,6 +32,7 @@ const Home = ()=> {
         if(clicked) setIsActive(false)
         imagesContainer.current.scrollLeft =  width*i
     } 
+
 
     React.useEffect(() => {
         let interval = null;
@@ -38,31 +48,40 @@ const Home = ()=> {
           clearInterval(interval);
         }
         return () => clearInterval(interval)
-      }, [isActive, imgPos]);
+      }, [isActive, imgPos, images]);
     
- 
+
+    const isLoading = React.useMemo(() => {
+    return cardsStatus === 'loading' || 
+    imagesStatus === "loading"
+    }, [cardsStatus, imagesStatus ])
+
+
+
     return (
         <>
-            <div className="sliderContainer">
-            <div className="imageNavigationContainer">
-                <div className="arrowsContainer">
-                    <ArrowBackIosIcon onClick={()=>handleScroll(imgPos-1, true)} className={imgPos === 0? "hide": ""}/> 
-                    <ArrowBackIosIcon onClick={()=>handleScroll(imgPos+1, true)} className={imgPos === images.length-1? "hide": ""} style={{transform: "rotate(180deg)"}} />
+            {isLoading && <Loading/>}
+            
+           {!isLoading && <div className="sliderContainer">
+                <div className="imageNavigationContainer">
+                    <div className="arrowsContainer">
+                        <ArrowBackIosIcon onClick={()=>handleScroll(imgPos-1, true)} className={imgPos === 0? "hide": ""}/> 
+                        <ArrowBackIosIcon onClick={()=>handleScroll(imgPos+1, true)} className={imgPos === images.length-1? "hide": ""} style={{transform: "rotate(180deg)"}} />
+                    </div>
+                    <div className="navBulletContainer">
+                    {
+                        images.map((img, i)=>{
+                            return(
+                                <div onClick={()=>handleScroll(i, true)} className={imgPos === i ? "navBullet acitveBullet": "navBullet"}></div>
+                            )
+                        })
+                    }
+                    </div>
                 </div>
-                <div className="navBulletContainer">
-                {
-                     images.map((img, i)=>{
-                         return(
-                             <div onClick={()=>handleScroll(i, true)} className={imgPos === i ? "navBullet acitveBullet": "navBullet"}></div>
-                         )
-                     })
-                }
+                <div id="imagesContainer" ref={imagesContainer}  className="imagesContainer">
+                    <Slider textRef={textContainerRef} images={images} />
                 </div>
-            </div>
-            <div id="imagesContainer" ref={imagesContainer}  className="imagesContainer">
-                <Slider textRef={textContainerRef} images={images} />
-            </div>
-            </div>
+            </div>}
             <div className="callForActionContainer">
                 <Typography className="objectives" variant="h5">Os principais objetivos da AGIRAR são promover a reabilitação e integração social de pessoas com doença mental grave e dar apoio às suas famílias, assim como promover o apoio, formação e investigação no domínio da saúde mental e reabilitação psicossocial</Typography>
                 <div className="buttonsContainer">
@@ -74,7 +93,7 @@ const Home = ()=> {
                     </Button>
                 </div>
             </div>
-            <ScrollContainer className="newsContainer">
+         {!isLoading &&  <ScrollContainer className="newsContainer">
                 {
                     cards.map(card=>{
                         return(
@@ -90,7 +109,7 @@ const Home = ()=> {
                         )
                     })
                 }
-            </ScrollContainer>
+            </ScrollContainer>}
             <div className="donateContainer">
                 <img src={donate} alt=""/>
                 <div className="donateInfoContainer">
