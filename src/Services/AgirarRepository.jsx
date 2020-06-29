@@ -78,6 +78,76 @@ export default class AgirarRepository {
             }, 3000);
         })))
     }
+    getOrgaosSociais = () => {
+        return(new Promise(((resolve, reject) => {
+            setTimeout(() => {
+                resolve(
+                   {
+                       assmbleiaGeral: [
+                           {
+                            foto: "https://res.cloudinary.com/agirar/image/upload/v1593432181/Grupo_8_llj7wz.png", 
+                            nome: "Fernanda da Conceição Borges de Castro", 
+                            funcao: "Presidente"
+                        }, 
+                        {
+                            foto: "https://res.cloudinary.com/agirar/image/upload/v1593432181/Grupo_8_llj7wz.png", 
+                            nome: "Olinda Maria Barbosa Carvalho", 
+                            funcao: "1º Secretário"
+                        }, 
+                        {
+                            foto: "https://res.cloudinary.com/agirar/image/upload/v1593432181/Grupo_8_llj7wz.png", 
+                            nome: "Ema Pereira Lopes Ramos", 
+                            funcao: "2º Secretário"
+                        }
+                    ], 
+                        direcao: [
+                            {
+                                foto: "https://res.cloudinary.com/agirar/image/upload/v1593432181/Grupo_8_llj7wz.png", 
+                                nome: "Fernando Jorge da Silva Morais", 
+                                funcao: "Presidente"
+                            }, 
+                            {
+                                foto: "https://res.cloudinary.com/agirar/image/upload/v1593432181/Grupo_8_llj7wz.png", 
+                                nome: "Maria Teresa Magalhães Vaz Queirós", 
+                                funcao: "Secretário"
+                            }, 
+                            {
+                                foto: "https://res.cloudinary.com/agirar/image/upload/v1593432181/Grupo_8_llj7wz.png", 
+                                nome: "Diana Maria Rocha da Silva", 
+                                funcao: "Vogal"
+                            }, 
+                            {
+                                foto: "https://res.cloudinary.com/agirar/image/upload/v1593432181/Grupo_8_llj7wz.png", 
+                                nome: "Maria José Figueiredo Pereira", 
+                                funcao: "Vice-Presidente"
+                            }, 
+                            {
+                                foto: "https://res.cloudinary.com/agirar/image/upload/v1593432181/Grupo_8_llj7wz.png", 
+                                nome: "Maria Gabriela Magalhães Barros Mesquita Ramalho", 
+                                funcao: "Tesoureiro"
+                            }
+                        ], 
+                        concelhoFiscal:[
+                            {
+                                foto: "https://res.cloudinary.com/agirar/image/upload/v1593432181/Grupo_8_llj7wz.png", 
+                                nome: "Álvaro Augusto da Rocha Marques", 
+                                funcao: "Presidente"
+                            }, 
+                            {
+                                foto: "https://res.cloudinary.com/agirar/image/upload/v1593432181/Grupo_8_llj7wz.png", 
+                                nome: "Maria Margarida de Araújo Soares Freitas", 
+                                funcao: "1º Vogal"
+                            }, 
+                            {
+                                foto: "https://res.cloudinary.com/agirar/image/upload/v1593432181/Grupo_8_llj7wz.png", 
+                                nome: "Maria Teresa da Rocha Ribeiro", 
+                                funcao: "2º Vogal"
+                            }
+                        ]
+                   })
+            }, 3000);
+        })))
+    }
 
     getHistory = ()=>{
         return(new Promise(((resolve, reject) => {

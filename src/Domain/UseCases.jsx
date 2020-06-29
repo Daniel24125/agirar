@@ -86,10 +86,31 @@ export const useGetAteliers=()=>{
       })
 }
 
+export const useGetOrgaosSociais=()=>{
+    const agirar = Container.get(AgirarRepository)
+    return useQuery({
+        queryKey: ['orgaos_sociais'],
+        queryFn: async () => {
+            const items = await agirar.getOrgaosSociais()
+            return (items)
+        },
+        config: { 
+          refetchOnWindowFocus: false,
+          refetchInterval: false,
+          refetchIntervalInBackground: false,
+          onSuccess: (res => {
+            res.forEach((value, id) => {
+                queryCache.setQueryData(['orgaosSociais', id], value)
+              })
+          }),
+        }
+      })
+}
+
 export const useSubmitAssociate = data => {
     const agirar = Container.get(AgirarRepository)
     return useQuery({
-        queryKey: ['ateliers_cards'],
+        queryKey: ['submit_associate'],
         queryFn: async () => {
             const response = await agirar.submitAssociateData(data)
             console.log(response)
